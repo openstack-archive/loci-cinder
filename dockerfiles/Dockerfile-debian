@@ -10,10 +10,13 @@ ARG GIT_REF
 ARG GIT_REF_REPO=https://git.openstack.org/openstack/${PROJECT}
 
 RUN set -x \
+    && apt-key adv --fetch-keys "http://download.ceph.com/keys/release.asc" \
+    && echo "deb http://download.ceph.com/debian-jewel jessie main" > /etc/apt/sources.list.d/ceph.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
 # Project specific packages start
         python \
+        python-rados \
 # Project specific packages end
     && apt-get install -y --no-install-recommends ca-certificates curl git \
 # common install start
@@ -37,7 +40,7 @@ RUN set -x \
     && python get-pip.py \
     && rm get-pip.py \
     && pip install virtualenv \
-    && virtualenv /virtualenv \
+    && virtualenv --system-site-packages /virtualenv \
     && hash -r \
     && pip install --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt /tmp/${PROJECT} \
     && groupadd -g 42424 ${PROJECT} \
