@@ -48,7 +48,6 @@ RUN set -x \
     && pip install --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt python-memcached pymysql \
 # Project specific command block end
     && yum history -y undo $(yum history list git | tail -2 | head -1 | awk '{ print $1}') \
-    && rpm -e --nodeps centos-logos \
     && yum clean all \
     && rm -rf /tmp/* /root/.cache \
     && find / -type f \( -name "*.pyc" -o -name "pip" -o -name "easy_install" -o -name "wheel" \) -delete
