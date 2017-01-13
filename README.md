@@ -1,5 +1,5 @@
 # OpenStack yaodu/cinder
-[![Docker Automated buil](https://img.shields.io/docker/automated/yaodu/cinder.svg)](https://hub.docker.com/r/yaodu/cinder/)
+[![Docker Build](https://img.shields.io/docker/automated/yaodu/cinder.svg)](https://hub.docker.com/r/yaodu/cinder/)
 
 Yaodu/cinder is a set of Dockerfiles that builds lightweight deployment agnostic images for OpenStack Cinder.
 
@@ -15,11 +15,9 @@ Images are built in the Docker Hub automatically on each push to the master bran
 
 
 ## Building locally
-It's really easy to build images locally for the distro of your choice. To clone the repo and build run the following:
+It's really easy to build images locally for the distro of your choice. To build an image you only need to run:
 ``` bash
-$ git clone https://github.com/yaodu/docker-cinder.git
-$ cd ./docker-cinder
-$ docker build dockerfiles \
+$ docker build https://github.com/yaodu/docker-cinder.git \
   --file dockerfiles/Dockerfile-debian \
   --tag yaodu/cinder:latest
 ```
@@ -35,7 +33,7 @@ For more advanced building you can use docker build arguments to define:
 
 This makes it really easy to integrate Yaodu images into your development or CI/CD workflow, for example, if you wanted to build an image from [this PS](https://review.openstack.org/#/c/416334/2) you could run:
 ``` bash
-$ docker build dockerfiles \
+$ docker build https://github.com/yaodu/docker-cinder.git \
   --file dockerfiles/Dockerfile-ubuntu \
   --tag mydockernamespace/cinder-testing:416334-2 \
   --build-arg GIT_REPO=http://git.openstack.org/openstack/cinder.git \
