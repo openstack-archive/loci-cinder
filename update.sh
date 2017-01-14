@@ -24,10 +24,7 @@ COMMON_INSTALL=$(cat <<'END_HEREDOC'
     && curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py \\\n\
     && python get-pip.py \\\n\
     && rm get-pip.py \\\n\
-    && pip install virtualenv \\\n\
-    && virtualenv /virtualenv \\\n\
-    && hash -r \\\n\
-    && pip install --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt /tmp/${PROJECT} \\\n\
+    && pip install --no-cache-dir --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt /tmp/${PROJECT} \\\n\
     && groupadd -g 42424 ${PROJECT} \\\n\
     && useradd -u 42424 -g ${PROJECT} -M -d /var/lib/${PROJECT} -s /usr/sbin/nologin -c "${PROJECT} user" ${PROJECT} \\\n\
     && mkdir -p /etc/${PROJECT} /var/log/${PROJECT} /var/lib/${PROJECT} /var/cache/${PROJECT} \\\n\

@@ -1,7 +1,6 @@
 FROM centos:7
 
-ENV PATH=/virtualenv/bin:${PATH} \
-    PROJECT=cinder
+ENV PROJECT=cinder
 ARG DOCKER_REPO=yaodu/openstack-requirements
 ARG DOCKER_TAG=centos
 ARG WHEELS
@@ -35,19 +34,17 @@ RUN set -x \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python get-pip.py \
     && rm get-pip.py \
-    && pip install virtualenv \
-    && virtualenv /virtualenv \
-    && hash -r \
-    && pip install --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt /tmp/${PROJECT} \
+    && pip install --no-cache-dir --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt /tmp/${PROJECT} \
     && groupadd -g 42424 ${PROJECT} \
     && useradd -u 42424 -g ${PROJECT} -M -d /var/lib/${PROJECT} -s /usr/sbin/nologin -c "${PROJECT} user" ${PROJECT} \
     && mkdir -p /etc/${PROJECT} /var/log/${PROJECT} /var/lib/${PROJECT} /var/cache/${PROJECT} \
     && chown ${PROJECT}:${PROJECT} /etc/${PROJECT} /var/log/${PROJECT} /var/lib/${PROJECT} /var/cache/${PROJECT} \
 # common install end
 # Project specific command block start
-    && pip install --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt python-memcached pymysql \
+    && pip install --no-cache-dir --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt python-memcached pymysql \
 # Project specific command block end
     && yum history -y undo $(yum history list git | tail -2 | head -1 | awk '{ print $1}') \
     && yum clean all \
     && rm -rf /tmp/* /root/.cache \
-    && find / -type f \( -name "*.pyc" -o -name "pip" -o -name "easy_install" -o -name "wheel" \) -delete
+    && pip uninstall pip wheel -y \
+    && find / -type f -name "*.pyc" -delete
