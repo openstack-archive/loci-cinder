@@ -12,6 +12,9 @@ RUN set -x \
     && yum install --setopt=tsflags=nodocs -y  \
 # Project specific packages start
         python \
+        httpd \
+        mod_ssl \
+        mod_wsgi \
 # Project specific packages end
     && yum install --setopt=tsflags=nodocs -y git \
 # common install start
@@ -41,9 +44,25 @@ RUN set -x \
     && chown ${PROJECT}:${PROJECT} /etc/${PROJECT} /var/log/${PROJECT} /var/lib/${PROJECT} /var/cache/${PROJECT} \
 # common install end
 # Project specific command block start
-    && pip install --no-cache-dir --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt python-memcached pymysql \
+    && pip install --no-cache-dir --no-index --no-compile --find-links /tmp/packages --constraint /tmp/packages/upper-constraints.txt \
+        python-memcached \
+        pymysql \
+    && cp -rfv /tmp/${PROJECT}/etc/cinder/* /etc/${PROJECT}/ \
+    && chown -R ${PROJECT}:${PROJECT} /etc/${PROJECT} \
+    && chown root:root /etc/${PROJECT}/policy.json \
+# Disable default apache config:
+    && sed -i 's/^Listen 80/#Listen 80/' /etc/httpd/conf/httpd.conf \
+    && rm /etc/httpd/conf.d/* \
+# Provide compatibility with ubuntu/debian apache:
+    && ln -s /usr/sbin/httpd /usr/sbin/apache2 \
+    && mkdir -p /etc/apache2/conf-enabled \
+    && echo "IncludeOptional /etc/apache2/conf-enabled/*.conf" >> /etc/httpd/conf/httpd.conf \
+    && mkdir -p /etc/apache2/mods-available \
+    && echo "Include /etc/apache2/mods-available/*.conf" >> /etc/httpd/conf/httpd.conf \
+    && touch /etc/apache2/envvars \
 # Project specific command block end
     && yum history -y undo $(yum history list git | tail -2 | head -1 | awk '{ print $1}') \
+    && rpm -e --nodeps centos-logos \
     && yum clean all \
     && rm -rf /tmp/* /root/.cache \
     && pip uninstall pip wheel -y \
