@@ -4,10 +4,10 @@ ENV PROJECT=cinder
 ARG DOCKER_REPO=yaodu/openstack-requirements
 ARG DOCKER_TAG=latest
 ARG WHEELS
-ARG GIT_REPO=https://github.com/openstack/${PROJECT}
+ARG GIT_REPO=https://git.openstack.org/openstack/${PROJECT}
 ARG GIT_REF
 ARG GIT_REF_REPO=https://git.openstack.org/openstack/${PROJECT}
-ARG SCRIPTS=https://github.com/yaodu/common/archive/0.1.2.tar.gz
+ARG SCRIPTS=https://git.openstack.org/yaodu/common/archive/0.1.2.tar.gz
 
 RUN set -x \
     && apt-get update \
