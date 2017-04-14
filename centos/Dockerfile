@@ -1,7 +1,7 @@
 FROM centos:7
 
 ENV PROJECT=cinder
-ARG DOCKER_REPO=yaodu/openstack-requirements
+ARG DOCKER_REPO=openstackloci/requirements
 ARG DOCKER_TAG=centos
 ARG WHEELS
 ARG PROJECT_REPO=https://git.openstack.org/openstack/${PROJECT}
