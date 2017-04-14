@@ -1,7 +1,7 @@
 FROM ubuntu:xenial
 
 ENV PROJECT=cinder
-ARG DOCKER_REPO=yaodu/openstack-requirements
+ARG DOCKER_REPO=openstackloci/requirements
 ARG DOCKER_TAG=ubuntu
 ARG WHEELS
 ARG PROJECT_REPO=https://git.openstack.org/openstack/${PROJECT}

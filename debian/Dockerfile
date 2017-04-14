@@ -1,8 +1,8 @@
 FROM debian:jessie-slim
 
 ENV PROJECT=cinder
-ARG DOCKER_REPO=yaodu/openstack-requirements
-ARG DOCKER_TAG=latest
+ARG DOCKER_REPO=openstackloci/requirements
+ARG DOCKER_TAG=debian
 ARG WHEELS
 ARG PROJECT_REPO=https://git.openstack.org/openstack/${PROJECT}
 ARG PROJECT_REF=master
