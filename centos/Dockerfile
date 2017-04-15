@@ -1,9 +1,7 @@
 FROM centos:7
 
 ENV PROJECT=cinder
-ARG DOCKER_REPO=openstackloci/requirements
-ARG DOCKER_TAG=centos
-ARG WHEELS
+ARG WHEELS=openstackloci/requirements:centos
 ARG PROJECT_REPO=https://git.openstack.org/openstack/${PROJECT}
 ARG PROJECT_REF=master
 ARG SCRIPTS_REPO=https://github.com/openstack/loci

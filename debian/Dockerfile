@@ -1,9 +1,7 @@
 FROM debian:jessie-slim
 
 ENV PROJECT=cinder
-ARG DOCKER_REPO=openstackloci/requirements
-ARG DOCKER_TAG=debian
-ARG WHEELS
+ARG WHEELS=openstackloci/requirements:debian
 ARG PROJECT_REPO=https://git.openstack.org/openstack/${PROJECT}
 ARG PROJECT_REF=master
 ARG SCRIPTS_REPO=https://github.com/openstack/loci

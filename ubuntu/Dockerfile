@@ -1,9 +1,7 @@
 FROM ubuntu:xenial
 
 ENV PROJECT=cinder
-ARG DOCKER_REPO=openstackloci/requirements
-ARG DOCKER_TAG=ubuntu
-ARG WHEELS
+ARG WHEELS=openstackloci/requirements:ubuntu
 ARG PROJECT_REPO=https://git.openstack.org/openstack/${PROJECT}
 ARG PROJECT_REF=master
 ARG SCRIPTS_REPO=https://github.com/openstack/loci
