@@ -12,6 +12,7 @@ ADD $OVERRIDE /
 
 RUN set -x \
     && apt-get update \
+    && apt-get dist-upgrade -y \
     && apt-get install -y --no-install-recommends git ca-certificates \
     && git init /tmp/common/ \
     && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \

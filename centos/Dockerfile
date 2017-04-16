@@ -11,6 +11,7 @@ ARG OVERRIDE=override
 ADD $OVERRIDE /
 
 RUN set -x \
+    && yum upgrade -y \
     && yum install -y git \
     && git init /tmp/common/ \
     && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
