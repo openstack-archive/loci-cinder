@@ -13,7 +13,9 @@ ADD $OVERRIDE /
 RUN set -x \
     && apt-get update \
     && apt-get dist-upgrade -y \
-    && apt-get install -y --no-install-recommends git ca-certificates \
+    && apt-get install -y --no-install-recommends git \
+        ca-certificates \
+        libxml2 \
     && git init /tmp/common/ \
     && git --git-dir /tmp/common/.git fetch --depth 1 $SCRIPTS_REPO $SCRIPTS_REF \
     && git --work-tree /tmp/common --git-dir /tmp/common/.git checkout FETCH_HEAD \
