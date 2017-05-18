@@ -1,0 +1,2 @@
+export PROJECT=cinder
+export DISTRO=debian
