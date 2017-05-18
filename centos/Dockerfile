@@ -1,5 +1,6 @@
 FROM centos:7
 
+ENV PATH=/var/lib/openstack/bin:$PATH
 ENV PROJECT=cinder
 ARG WHEELS=openstackloci/requirements:centos
 ARG PROJECT_REPO=https://git.openstack.org/openstack/${PROJECT}

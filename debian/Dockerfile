@@ -1,5 +1,6 @@
 FROM debian:jessie-slim
 
+ENV PATH=/var/lib/openstack/bin:$PATH
 ENV PROJECT=cinder
 ARG WHEELS=openstackloci/requirements:debian
 ARG PROJECT_REPO=https://git.openstack.org/openstack/${PROJECT}
