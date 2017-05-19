@@ -1,0 +1,5 @@
+[centos-ceph-jewel]
+name=CentOS-7 - Ceph Jewel
+baseurl=http://download.ceph.com/rpm-jewel/el7/noarch
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Ceph-Jewel

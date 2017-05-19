@@ -1,0 +1,3 @@
+export PROJECT=cinder
+export DISTRO=centos
+export PLUGIN=ceph
