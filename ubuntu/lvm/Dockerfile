@@ -1,4 +1,5 @@
-FROM openstackloci/cinder:ubuntu
+ARG FROM=openstackloci/cinder:ubuntu
+FROM ${FROM}
 
 ARG OVERRIDE=override
 
