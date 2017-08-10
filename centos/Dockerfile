@@ -1,4 +1,5 @@
-FROM centos:7
+ARG FROM=centos:7
+FROM ${FROM}
 
 ENV PATH=/var/lib/openstack/bin:$PATH
 ENV PROJECT=cinder

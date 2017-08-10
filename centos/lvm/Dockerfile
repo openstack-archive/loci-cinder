@@ -1,4 +1,5 @@
-FROM openstackloci/cinder:centos
+ARG FROM=openstackloci/cinder:centos
+FROM ${FROM}
 
 ARG OVERRIDE=override
 

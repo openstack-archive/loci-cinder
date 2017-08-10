@@ -1,4 +1,5 @@
-FROM ubuntu:xenial
+ARG FROM=ubuntu:xenial
+FROM ${FROM}
 
 ENV PATH=/var/lib/openstack/bin:$PATH
 ENV PROJECT=cinder

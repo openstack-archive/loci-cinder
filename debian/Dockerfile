@@ -1,4 +1,5 @@
-FROM debian:jessie-slim
+ARG FROM=debian:jessie-slim
+FROM ${FROM}
 
 ENV PATH=/var/lib/openstack/bin:$PATH
 ENV PROJECT=cinder
