@@ -1,3 +1,0 @@
-export PROJECT=cinder
-export DISTRO=debian
-export PLUGIN=lvm

@@ -1,0 +1,8 @@
+- project:
+    name: openstack/loci-cinder
+    check:
+      jobs:
+        - noop
+    gate:
+      jobs:
+        - noop

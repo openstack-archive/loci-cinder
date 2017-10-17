@@ -1,3 +1,0 @@
-export PROJECT=cinder
-export DISTRO=ubuntu
-export PLUGIN=ceph
