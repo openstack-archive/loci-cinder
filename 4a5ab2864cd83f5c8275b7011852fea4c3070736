@@ -1,0 +1,9 @@
+Code-Review+1: Ivan Kolodyazhny <e0ne@e0ne.info>
+Code-Review+2: Sam Yaple <sam+git@yaple.net>
+Workflow+1: Sam Yaple <sam+git@yaple.net>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 12 Feb 2018 17:32:32 +0000
+Reviewed-on: https://review.openstack.org/539703
+Project: openstack/loci-cinder
+Branch: refs/heads/master
