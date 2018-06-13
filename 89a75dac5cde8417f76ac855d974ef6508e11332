@@ -1,0 +1,9 @@
+Code-Review+2: Sam Yaple <sam+git@yaple.net>
+Workflow+1: Sam Yaple <sam+git@yaple.net>
+Code-Review+1: Andreas Jaeger <jaegerandi@gmail.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 13 Jun 2018 07:34:11 +0000
+Reviewed-on: https://review.openstack.org/574395
+Project: openstack/loci-cinder
+Branch: refs/heads/master
